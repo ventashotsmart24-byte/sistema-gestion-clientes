@@ -12,3 +12,11 @@ out/
 *.pem
 *.p12
 *.crt
+
+.env
+.env.*
+*.secret
+*.key
+*.pem
+*.p12
+*.crt
