@@ -20,3 +20,6 @@ out/
 *.pem
 *.p12
 *.crt
+
+.env
+.env.*
