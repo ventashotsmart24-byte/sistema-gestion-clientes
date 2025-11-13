@@ -28,4 +28,4 @@
   from = "/*"
   to = "/index.html"
   status = 200
-  force = falseS
+  force = false
