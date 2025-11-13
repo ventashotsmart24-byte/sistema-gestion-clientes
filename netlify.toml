@@ -1,0 +1,9 @@
+# en Windows puedes crear así:
+@"
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+"@ | Out-File -Encoding utf8 netlify.toml
