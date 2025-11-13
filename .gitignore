@@ -5,3 +5,10 @@ out/
 .env.local
 .vercel
 .netlify
+.env
+.env.*
+*.secret
+*.key
+*.pem
+*.p12
+*.crt
