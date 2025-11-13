@@ -23,3 +23,11 @@ out/
 
 .env
 .env.*
+
+.env
+.env.*
+*.secret
+*.key
+*.pem
+*.p12
+*.crt
