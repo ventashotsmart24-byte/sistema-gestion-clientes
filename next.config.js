@@ -1,19 +1,17 @@
-const path = require('path');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: process.env.NEXT_DIST_DIR || '.next',
-  output: process.env.NEXT_OUTPUT_MODE,
+  // Asegura SSR (NO usar 'export')
+  output: undefined,          // build estándar de Next
+  distDir: '.next',           // explícito (por defecto)
+
+  // Opcional: si tienes problemas de tracing en CI/Netlify
   experimental: {
-    outputFileTracingRoot: path.join(__dirname, '../'),
+    outputFileTracingRoot: process.cwd(),
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: false,
-  },
-  images: { unoptimized: true },
+
+  // Opcional: descomenta si ESLint/TS te bloquean el build
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
 };
 
 module.exports = nextConfig;

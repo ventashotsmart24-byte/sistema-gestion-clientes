@@ -1,9 +1,31 @@
-# en Windows puedes crear así:
-@"
+# ==== NETLIFY CONFIGURATION FOR NEXT.JS SSR ====
+
 [build]
   command = "npm run build"
-  publish = ".next"
+  # No definimos publish, el plugin oficial de Netlify lo manejará automáticamente.
+  # Si lo pusieras manualmente, rompería el soporte SSR.
 
+[build.environment]
+  NODE_VERSION = "18"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# ==== PLUGIN OFFICIAL DE NETLIFY PARA NEXT.JS ====
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-"@ | Out-File -Encoding utf8 netlify.toml
+
+# ==== CONFIGURACIÓN OPCIONAL DE CABECERAS (para caching y CORS) ====
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ==== REDIRECTS SPA FALLBACK (opcional para rutas cliente) ====
+# Esto solo aplica si tienes algún routing del lado del cliente en Next.js.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = falseS
